@@ -1,0 +1,13 @@
+body {
+    background: #85b5f4;
+    background: linear-gradient(135deg, #85CFF4, #FFFAF2);
+}
+
+
+
+h3 {
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 0.5em;
+}
