@@ -162,25 +162,21 @@
         </div>
 
     </div>
-
-
+    
     <!-- Codigo para ventana modal de presentacion de busqueda por titulo -->
     <section class="imodal ">
         <div class="imodal_container">
-            <img src="{{ url_for('static', filename='img/modal.png') }}" alt="modal.png" class="imodal_img">
-            <h2 class="imodal_title">Resultado de la búsqueda por Título</h2>
-            <p class="imodal_paragraph" id="resultado"></p>
+            <div>
+                <h2 class="imodal_title">Resultado de la búsqueda por Título</h2>
+            </div>
+
+            <div class="imodal_sub-container">
+                <img src="{{ url_for('static', filename='img/modal.png') }}" alt="modal.png" class="imodal_img">
+                <p class="imodal_paragraph" id="resultado"></p>
+            </div>
             <button class="btn btn-primary" id="btn-close">Cerrar</button>
         </div>
     </section>
-
-
-
-
-
-
-
-
 
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
 </body>
