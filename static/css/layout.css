@@ -15,7 +15,7 @@ h3 {
 
 /* ------------------------------------------------------------*/
 
-.imodal{
+.imodal {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,12 +25,12 @@ h3 {
     display: flex;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .6s .9s;
+    /*transition: opacity .6s .9s;
     --transform: translateY(-100vh);
-    --transition: transform .8s;
+    --transition: transform .8s;*/
 }
 
-.imodal--show{
+.imodal--show {
     opacity: 1;
     pointer-events: unset;
     transition: opacity .6s;
@@ -38,11 +38,13 @@ h3 {
     --transition: transform .8s .8s;
 }
 
-.imodal_container{
+.imodal_container {
     margin: auto;
+    align-items: center;
+    align-content: center;
     width: 80%;
-    max-width: 600px;
-    max-height: 90%;
+    max-width: 500px;
+    max-height: 70%;
     background-color: #fff;
     border-radius: 10px;
     padding: 1em 2.5em;
@@ -50,37 +52,45 @@ h3 {
     gap: 0.5em;
     place-items: center;
     grid-auto-columns: 100%;
-    transform: var(--transform);
-    transition:var(--transition);
+    /*transform: var(--transform);
+    transition:var(--transition);*/
 }
 
-.imodal_title{
+.imodal_sub-container {
+    display: flex;
+}
+
+.imodal_title {
     font-size: 1.5rem;
 }
 
-.imodal_paragraph{
+.imodal_paragraph {
     margin-bottom: 10px;
 }
 
-.imodal_img{
-    width: 50%;
-    max-width: 200px;
+.imodal_img {
+    width: 40%;
+    margin-right: 1.2em;
 }
 
-.imodal_close{
+.imodal_close {
     text-decoration: none;
     color: #fff;
     background-color: #00ff00;
     padding: 1em 3em;
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 6px;
     display: inline-block;
     font-weight: 300;
     transition: background-color .3s;
 }
 
-.imodal_close:hover{
+.imodal_close:hover {
     background-color: #fff;
+}
+
+#btn-close {
+    color: white;
 }
 
 #btn-close {
