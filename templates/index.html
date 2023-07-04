@@ -16,7 +16,38 @@
 </head>
 
 <body>
+        <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-primary">
+        <div class="container text-primary">
+            <a class="navbar-brand" href="index.html">Biblioteca</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html" aria-current="page">Inicio <span
+                                class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Servicios</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Soporte Técnico</a>
+                            <a class="dropdown-item" href="#">Contacto</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex my-2 my-lg-0" id="searchForm">
+                    <input class="form-control me-sm-2" type="text" placeholder="Buscar por título" name="searchTitle">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="btn-buscar">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
+    
     <h1 class="text-center fw-bolder fst-italic mt-5 mb-3 text-primary">Biblioteca del Mundo</h1>
     <div class="card mx-auto mb-3" style="width: 30%;">
         <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="">
@@ -141,7 +172,15 @@
     </div>
 
 
-
+    <!-- Codigo para ventana modal de presentacion de busqueda por titulo -->
+    <section class="imodal ">
+        <div class="imodal_container">
+            <img src="{{ url_for('static', filename='img/modal.png') }}" alt="modal.png" class="imodal_img">
+            <h2 class="imodal_title">Resultado de la búsqueda por Título</h2>
+            <p class="imodal_paragraph" id="resultado"></p>
+            <button class="btn btn-primary" id="btn-close">Cerrar</button>
+        </div>
+    </section>
 
 
 
