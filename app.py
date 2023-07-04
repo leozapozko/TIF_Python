@@ -294,6 +294,18 @@ def get_libro(id):
     libro = Libro.query.get(id)  # Obtiene el producto correspondiente al ID recibido
     return libro_schema.jsonify(libro)  # Retorna el JSON del producto
 
+@app.route("/libros/search/<title>", methods=["GET"])
+def get_libro_titulo(title):
+    """
+    Endpoint para obtener un libro específico de la base de datos.
+
+    Retorna un JSON con la información del libro correspondiente al ID proporcionado.
+    """
+    libro = Libro.query.filter_by(title=title).first()  # Obtiene el producto correspondiente al ID recibido
+    return libro_schema.jsonify(libro)  # Retorna el JSON del producto
+
+
+
 @app.route("/libros/<id>", methods=["DELETE"])
 def delete_libro(id):
     """
