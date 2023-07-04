@@ -125,3 +125,84 @@ fetch('http://localhost:5000//libros', {
     });
 });
 //------------------------------------------------------------------
+
+
+
+// Codigo para la busqueda por titulo ------------------------------
+document.getElementById("searchForm").addEventListener('submit', function (event) {
+  event.preventDefault(); // Evita que el formulario se envíe de forma convencional
+  // Resto del código aquí
+  var form = document.getElementById("searchForm");    // Obtiene el formulario
+  var formData = new FormData(form);            // Crea un objeto FormData con los datos del formulario
+  var jsonData = {};                            // Crea un objeto vacío para almacenar los datos JSON
+
+  // Agrega cada campo del formulario al objeto jsonData
+  for (var [key, value] of formData.entries()) {
+    jsonData[key] = value;
+  }
+  //Convierte los datos en formato JSON:
+  var jsonString = JSON.stringify(jsonData);
+
+  var elem = formData.get('searchTitle'); 
+
+  if (elem == "")
+    alert("Debe ingresar un nombre para la búsqueda");
+  else {
+    var urlid = "http://localhost:5000//libros/" + elem
+    //alert(urlid);
+    //Envía los datos JSON al servidor:
+    fetch(urlid, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(response => response.json())  //se pasa a objeto javascript
+      .then(data => {
+        //location.reload();
+        form.reset()
+        console.log('Respuesta del servidor:', data);
+        // Resto del código después de recibir la respuesta del servidor
+
+        if (isEmptyObject(data) == false) {
+          //***********************************************************************
+          // Codigo para abrir ventana modal para presentar resultados de busqueda
+          const modal = document.querySelector('.imodal');
+          modal.classList.add('imodal--show');
+          //Se muestran los resultados en el modal
+          document.getElementById("resultado"
+          ).innerHTML = `  
+          <p class="imodal_paragraph" id="resultado">
+              <li>Id: ${data.id}</li>
+              <li>Título: ${data.title}</li>
+              <li>Apellido del Autor: ${data.surname}</li>
+              <li>Nombre del Autor: ${data.name}</li>
+              <li>ISBN: ${data.isbn}</li>
+              <li>Stock: ${data.stock}</li>
+          </p>
+          `;
+          //Codigo para cerrar el modal
+          const closeModal = document.getElementById("btn-close");
+          closeModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('imodal--show');
+          });
+          //***********************************************************************/
+          //console.log(data.title);
+        }
+        else {
+          alert("El libro no fue encontrado");
+        }
+
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Resto del código para manejar errores
+      });
+  }
+});
+//------------------------------------------------------------------
+//Esta funcion determina si la respuesta del json esta vacia
+function isEmptyObject(obj) {
+  return JSON.stringify(obj) === '{}';
+}
